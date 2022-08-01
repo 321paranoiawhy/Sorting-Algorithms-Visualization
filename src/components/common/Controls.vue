@@ -169,9 +169,6 @@ export default {
             });
         };
 
-        // if props.type === "square", then show square rather than canvas
-        let isSquare = props.type === "square";
-
         const option = {
             delay: delay,
             order: order,

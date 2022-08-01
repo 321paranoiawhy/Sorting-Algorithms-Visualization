@@ -7,13 +7,12 @@
             {{ item }}
         </li>
     </transition-group>
-    <button @click="shuffle"></button>
+    <button @click="shuffleArr"></button>
 </template>
 
 <script>
 import { ref } from "@vue/reactivity";
 import { useStore } from "vuex";
-const _ = require("lodash");
 
 export default {
     name: "Square",
@@ -21,7 +20,7 @@ export default {
         const store = useStore();
         let arr = ref(store.state.dynamicArr);
 
-        function shuffle() {
+        function shuffleArr() {
             for (let i = 0; i < 10; i++) {
                 let j = Math.floor(Math.random() * arr.value.length);
                 let k = Math.floor(Math.random() * arr.value.length);
@@ -33,7 +32,7 @@ export default {
         }
         return {
             arr,
-            shuffle,
+            shuffleArr,
         };
     },
 };

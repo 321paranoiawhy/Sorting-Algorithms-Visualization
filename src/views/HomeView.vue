@@ -49,7 +49,7 @@
     <!-- https://tholman.com/github-corners/ -->
     <!-- change <svg style="fill=:#7d30fa;"> -->
     <a
-        href="https://github.com/321paranoiawhy/Algorithms-Visualization"
+        href="https://github.com/321paranoiawhy/Sorting-Algorithms-Visualization"
         aria-label="View source on GitHub"
     >
         <svg
@@ -88,8 +88,7 @@
 import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
-const _ = require("lodash");
-
+import { shuffle } from "@/utils/shuffle";
 import Driver from "driver.js";
 
 import Overview from "@/components/Overview.vue";
@@ -163,7 +162,7 @@ export default {
                     element: "#right-placeholder",
                     popover: {
                         title: "AD",
-                        description: "Advertising for Rent",
+                        description: "Email: paranoiawhy@gmail.com",
                         position: "right",
                     },
                 },
@@ -171,8 +170,6 @@ export default {
                     element: "#github-corner",
                     popover: {
                         title: "View source on GitHub",
-                        description:
-                            "https://github.com/321paranoiawhy/Algorithms-Visualization",
                         position: "right",
                     },
                 },
@@ -250,11 +247,11 @@ export default {
         // 0 ~ 359
         const length = 360;
         // https://lodash.com/docs/4.17.15#shuffle
-        let shuffleArr = _.shuffle([...new Array(length).keys()]);
+        let shuffleArr = shuffle([...new Array(length).keys()]);
 
         // 0 ~ 9
         const boxLength = 10;
-        let dynamicArr = _.shuffle([...new Array(boxLength).keys()]);
+        let dynamicArr = shuffle([...new Array(boxLength).keys()]);
 
         const store = useStore();
         store.commit("getShuffleArr", shuffleArr);
