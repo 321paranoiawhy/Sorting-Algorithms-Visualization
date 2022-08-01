@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "s": "vue-cli-service serve",
+    "b": "vue-cli-service build"
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "driver.js": "^0.9.8",
+    "element-plus": "^2.2.10",
+    "prismjs": "^1.28.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
+    "vue-tippy": "^6.0.0-alpha.62",
     "vuex": "^4.0.0"
   },
   "devDependencies": {

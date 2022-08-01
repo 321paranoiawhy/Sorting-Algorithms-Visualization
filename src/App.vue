@@ -1,30 +1,33 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+    <router-view />
 </template>
 
+<script>
+import { onMounted } from "@vue/runtime-core";
+export default {
+    setup() {
+        onMounted(() => {
+            // set "lang" of html to "en-US"
+            // https://forum.vuejs.org/t/settings-lang-sv-to-the-html-tag/7047/4
+            document.documentElement.setAttribute("lang", "en-US");
+        });
+    },
+};
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@font-face {
+    font-family: Merriweather;
+    src: "./assets/fonts/Merriweather-Regular.ttf";
 }
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
+#app {
+    font-family: Merriweather sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
     color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+}
+body {
+    margin: 0;
 }
 </style>

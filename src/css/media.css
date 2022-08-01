@@ -1,0 +1,74 @@
+/* 500px */
+@media (max-width: 500px) {
+    .github-corner:hover .octo-arm {
+        animation: none;
+    }
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out;
+    }
+    div.note {
+        width: clamp(100px, 60vw, 200px) !important;
+        margin: 1rem auto !important;
+    }
+    div.switch-container {
+        flex-direction: column;
+    }
+    div.el-switch {
+        margin-right: 0 !important;
+    }
+    span.right {
+        margin-left: 0 !important;
+    }
+    /* Controls img */
+    img {
+        width: 16px !important;
+        height: 16px !important;
+    }
+    /* canvas */
+    canvas {
+        width: 72% !important;
+        height: 72% !important;
+    }
+}
+/* 800px */
+@media (max-width: 800px) {
+    svg {
+        width: 10vw;
+    }
+    span.NOTE {
+        font-size: 1rem;
+    }
+    div.note {
+        flex-direction: column;
+    }
+    span.prism-span {
+        /* avoid language overlay */
+        display: none;
+    }
+}
+/* 1600px */
+@media (max-width: 1600px) {
+    ul#left-ul {
+        display: flex;
+        flex-flow: wrap;
+        justify-content: center;
+        position: static;
+        width: 85vw;
+        height: auto;
+        border-right: none;
+    }
+    ul#left-ul li {
+        padding: 0.5rem;
+    }
+    ul#left-ul span.zero {
+        margin-left: 0 !important;
+    }
+    div#center-content {
+        width: 90vw;
+        margin-left: 0 !important;
+        margin-right: 10vw !important;
+    }
+    /* div.TOC {
+        display: none !important;
+    } */
+}

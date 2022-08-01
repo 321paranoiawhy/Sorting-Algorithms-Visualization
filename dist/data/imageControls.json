@@ -1,0 +1,37 @@
+[
+    {
+        "image_src": "MdiSpeedometerSlow",
+        "content": "Slow Down",
+        "click": "slowDown"
+    },
+    {
+        "image_src": "MdiMotionPlayOutline",
+        "content": "Play",
+        "click": "play"
+    },
+    {
+        "image_src": "MdiMotionPauseOutline",
+        "content": "Sorry, can not pause",
+        "click": "pause"
+    },
+    {
+        "image_src": "MdiSpeedometer",
+        "content": "Speed Up",
+        "click": "speedUp"
+    },
+    {
+        "image_src": "MdiRestart",
+        "content": "Restart",
+        "click": "restart"
+    },
+    {
+        "image_src": "MdiShuffle",
+        "content": "Shuffle",
+        "click": "shuffle"
+    },
+    {
+        "image_src": "MdiArrowDownThinCircleOutline",
+        "content": "Download",
+        "click": "download"
+    }
+]

@@ -1,0 +1,17 @@
+:root {
+    --main-color: #7d30fa;
+    --second-color: #eee6fc;
+    --third-color: #13ce66;
+    --divider-light: rgba(60, 60, 60, 0.12);
+}
+::selection:not(img) {
+    background: var(--main-color);
+    color: #fff;
+}
+
+span.colored {
+    color: var(--main-color);
+}
+span.token.parameter {
+    color: var(--third-color);
+}
