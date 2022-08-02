@@ -7,7 +7,20 @@
             content="Counting Sort"
             heading="h2"
         ></Heading>
-        <Prism :source="countingSort"></Prism>
+        <Prism
+            source="function countingSort(array) {
+    const max = Math.max(...array);
+    const count = new Array(max + 1).fill(0);
+    array.forEach((item) => count[item] += 1);
+    let j = 0;
+    for (let i = 0; i < max + 1; i++) {
+        while (count[i]--) {
+            array[j++] = i;
+        }
+    }
+    return array;
+}"
+        ></Prism>
         <Note
             left="NOTE 1"
             right="Descending Order: just change \[let i = 0\] ⟶ \[let i = max\] and \[i < max + 1\] ⟶ \[i >= 0\]."
@@ -78,14 +91,7 @@
 </template>
 
 <script>
-import { countingSort } from "@/utils/SortFunction/CountingSort/countingSort";
-
 export default {
     name: "CountingSort",
-    setup() {
-        return {
-            countingSort,
-        };
-    },
 };
 </script>

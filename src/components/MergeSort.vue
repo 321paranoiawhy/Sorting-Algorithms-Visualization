@@ -7,7 +7,29 @@
             content="Recursive Merge Sort"
             heading="h2"
         ></Heading>
-        <Prism :source="mergeSortRecursion"></Prism>
+        <Prism
+            source="function mergeSortRecursion(left, right) {
+    const result = [];
+    while (left.length > 0 && right.length > 0) {
+        if (left[0] < right[0]) {
+            result.push(left.shift());
+        }
+        else {
+            result.push(right.shift());
+        }
+    }
+    return [...result, ...left, ...right];
+}
+
+function mergeSort(array) {
+    const { length } = array;
+    if (length === 1) return array;
+    let mid = Math.floor(length / 2);
+    let left = array.slice(0, mid);
+    let right = array.slice(mid);
+    return merge(mergeSort(left), mergeSort(right));
+}"
+        ></Prism>
         <Note
             left="NOTE 1"
             right="Descending Order: just change \[left[0] < right[0]\] ⟶ \[left[0] > right[0]\]."
@@ -19,7 +41,40 @@
             content="Non-Recursive Merge Sort"
             heading="h2"
         ></Heading>
-        <Prism :source="mergeSortNonRecursion"></Prism>
+        <Prism
+            source="function mergeSortNonRecursion(array) {
+    function merge(left, right, leftLimit, rightLimit, sorted, buffer) {
+        let i = left;
+        while (left < leftLimit && right < rightLimit) {
+            if (sorted[left] <= sorted[right]) {
+                buffer[i++] = sorted[left++];
+            } else {
+                buffer[i++] = sorted[right++];
+            }
+        }
+        while (left < leftLimit) {
+            buffer[i++] = sorted[left++];
+        }
+        while (right < rightLimit) {
+            buffer[i++] = sorted[right++];
+        }
+    }
+    let sorted = Array.from(array);
+    let n = sorted.length;
+    let buffer = new Array(n);
+    for (let size = 1; size < n; size *= 2) {
+        for (let leftStart = 0; leftStart < n; leftStart += 2 * size) {
+            let left = leftStart,
+                right = Math.min(left + size, n),
+                leftLimit = right,
+                rightLimit = Math.min(right + size, n);
+            merge(left, right, leftLimit, rightLimit, sorted, buffer);
+        }
+        [sorted, buffer] = [buffer, sorted];
+    }
+    return sorted;
+}"
+        ></Prism>
         <Note
             left="NOTE 2"
             right="Descending Order: just change \[sorted[left] <= sorted[right]\] ⟶ \[sorted[left] > sorted[right]\]."
@@ -90,16 +145,7 @@
 </template>
 
 <script>
-import { mergeSortRecursion } from "@/utils/SortFunction/MergeSort/mergeSortRecursion.js";
-import { mergeSortNonRecursion } from "@/utils/SortFunction/MergeSort/mergeSortNonRecursion.js";
-
 export default {
     name: "MergeSort",
-    setup() {
-        return {
-            mergeSortRecursion,
-            mergeSortNonRecursion,
-        };
-    },
 };
 </script>

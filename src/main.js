@@ -15,8 +15,8 @@ import 'tippy.js/dist/tippy.css'
 // driver.js
 import 'driver.js/dist/driver.min.css'
 
-// ElementPlus
-import ElementPlus from 'element-plus'
+// ElementPlus ElSwitch
+import { ElSwitch } from 'element-plus'
 import 'element-plus/dist/index.css'
 
 const app = createApp(App)
@@ -40,11 +40,10 @@ import Heading from "@/components/common/Heading.vue";
 import Note from "@/components/common/Note.vue";
 import Prism from "@/components/common/Prism.vue";
 import TOC from "@/components/common/TOC.vue";
-app.component('BottomRightNav', BottomRightNav).component('Controls', Controls).component('Heading', Heading).component('Note', Note).component('Prism', Prism).component('TOC', TOC);
+app.component('BottomRightNav', BottomRightNav).component('Controls', Controls).component('Heading', Heading).component('Note', Note).component('Prism', Prism).component('TOC', TOC).component('ElSwitch', ElSwitch);
 // now that component above can be use anywhere
 
 
 
 // VueTippy, ElementPlus
-app.use(store).use(router).use(VueTippy).use(ElementPlus).mount('#app')
-// createApp(App).use(store).use(router).use(VueTippy).use(ElementPlus).mount('#app')
+app.use(store).use(router).use(VueTippy).mount('#app')

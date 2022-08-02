@@ -1,46 +1,51 @@
 <template>
-    <!-- [Vue warn]: Component inside <Transition> renders non-element root node that cannot be animated. -->
-    <!-- https://stackoverflow.com/questions/65553121/vue-3-transition-renders-non-element-root-node-that-cannot-be-animated -->
     <div>
         <BottomRightNav></BottomRightNav>
-        <!-- <TOC
-            :content="[1, 2, 3, 3.1, 3.2, 3.3, 3.4, 3.5]"
-            :anchor="[
-                'Bubble-from-Start-to-End',
-                'Bubble-from-End-to-Start',
-                'Algorithm-Visualization',
-                'Circle',
-                'Scatter-to-Line',
-                'Scatter-to-Spiral',
-                'Needle',
-                'Waveform',
-            ]"
-            :level="[1, 1, 1, 2, 2, 2, 2, 2]"
-        ></TOC> -->
+        <!-- <TOC :content="[1, 2, 3, 3.1, 3.2, 3.3, 3.4, 3.5]"></TOC> -->
 
-        <!-- <Square></Square> -->
-
-        <!-- Bubble from Start to End -->
+        <!-- Bubble Sort from Start to End -->
         <Heading
-            anchor="Bubble-from-Start-to-End"
-            content="Bubble from Start to End"
+            anchor="Bubble-Sort-from-Start-to-End"
+            content="Bubble Sort from Start to End"
             heading="h2"
         ></Heading>
-
-        <Prism :source="bubbleSortFromStartToEnd"></Prism>
-
+        <Prism
+            source="function bubbleSortFromStartToEnd(array) {
+    const { length } = array;
+    for (let i = 0; i < length - 1; i++) {
+        for (let j = 0; j < length - i - 1; j++) {
+            if (array[j] > array[j + 1]) {
+                [array[j], array[j + 1]] = [array[j + 1], array[j]];
+            }
+        }
+    }
+    return array;
+}"
+        ></Prism>
         <Note
             left="NOTE 1"
             right="Descending Order: just change the inequality sign of \[array[j] > array[j + 1]\] to the opposite of it ⟶ \[array[j] < array[j + 1]\]."
         ></Note>
 
-        <!-- Bubble from End to Start -->
+        <!-- Bubble Sort from End to Start -->
         <Heading
-            anchor="Bubble-from-End-to-Start"
-            content="Bubble from End to Start"
+            anchor="Bubble-Sort-from-End-to-Start"
+            content="Bubble Sort from End to Start"
             heading="h2"
         ></Heading>
-        <Prism :source="bubbleSortFromEndToStart"></Prism>
+        <Prism
+            source="function bubbleSortFromEndToStart(array) {
+    const { length } = array;
+    for (let i = 0; i < length - 1; i++) {
+        for (let j = length - 1; j > i; j--) {
+            if (array[j] < array[j - 1]) {
+                [array[j], array[j - 1]] = [array[j - 1], array[j]];
+            }
+        }
+    }
+    return array;
+}"
+        ></Prism>
         <Note
             left="NOTE 2"
             right="Descending Order: just change the inequality sign of \[array[j] < array[j - 1]\] to the opposite of it ⟶ \[array[j] > array[j - 1]\]."
@@ -54,7 +59,7 @@
         ></Heading>
         <Note
             left="Note 3"
-            right="Here are several data visualization of Bubble Sort Algorithm."
+            right="Here are several data visualization of Selection Sort Algorithm."
         ></Note>
 
         <Heading anchor="Circle" content="Circle" heading="h3"></Heading>
@@ -86,21 +91,7 @@
 </template>
 
 <script>
-import { bubbleSortFromStartToEnd } from "@/utils/SortFunction/BubbleSort/bubbleSortFromStartToEnd.js";
-import { bubbleSortFromEndToStart } from "@/utils/SortFunction/BubbleSort/bubbleSortFromEndToStart.js";
-
-// import Square from "@/components/Square.vue";
-
 export default {
     name: "BubbleSort",
-    components: {
-        // Square,
-    },
-    setup() {
-        return {
-            bubbleSortFromStartToEnd,
-            bubbleSortFromEndToStart,
-        };
-    },
 };
 </script>

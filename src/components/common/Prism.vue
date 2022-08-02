@@ -48,7 +48,7 @@ export default {
     // <Prism source="console.log('Prism');" language="javascript" theme="a11y-dark" copy="Copy the snippet!"></Prism>
     props: {
         source: {
-            // type: String,
+            type: String,
             default: "console.log('Prism');",
         },
         language: {
@@ -63,6 +63,10 @@ export default {
         copy: {
             type: String,
             default: "Copy the snippet!",
+        },
+        copiedTip: {
+            type: String,
+            default: "Copied!",
         },
     },
     setup(props) {
@@ -109,13 +113,13 @@ export default {
             copySpan.style.opacity = "0";
             copySpan.onclick = () => {
                 // change content
-                copySpan.innerHTML = "Copied!";
+                // copySpan.innerHTML = "Copied!";
+                copySpan.innerHTML = props.copiedTip;
                 // https://www.zhangxinxu.com/wordpress/2021/10/js-copy-paste-clipboard/
                 if (navigator.clipboard) {
                     // clipboard api
                     navigator.clipboard.writeText(props.source);
                 } else {
-                    console.log("y");
                     const textarea = document.createElement("textarea");
                     document.body.appendChild(textarea);
                     // hide textarea

@@ -24,4 +24,4 @@ function mergeSort(array) {
     return merge(mergeSort(left), mergeSort(right));
 }
 
-export { mergeSortRecursion }
+export { mergeSortRecursion, mergeSort }

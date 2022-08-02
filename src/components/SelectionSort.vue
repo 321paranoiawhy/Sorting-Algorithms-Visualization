@@ -1,16 +1,32 @@
 <template>
     <div>
         <BottomRightNav></BottomRightNav>
+
         <!-- Selection Sort from Start to End -->
         <Heading
             anchor="Selection-Sort-from-Start-to-End"
             content="Selection Sort from Start to End"
             heading="h2"
         ></Heading>
-        <Prism :source="selectionSortFromStartToEnd"></Prism>
+        <Prism
+            source="function selectionSortFromStartToEnd(array) {
+    const { length } = array;
+    let minIndex;
+    for (let i = 0; i < length - 1; i++) {
+        minIndex = i;
+        for (let j = i + 1; j < length; j++) {
+            if (array[j] < array[minIndex]) {
+                minIndex = j;
+            }
+        }
+        [array[i], array[minIndex]] = [array[minIndex], array[i]];
+    }
+    return array;
+}"
+        ></Prism>
         <Note
             left="NOTE 1"
-            right="Descending Order: just change all minIndex ⟶ maxIndex, and \[array[j] < array[minIndex]\] ⟶ \[array[j] > array[maxIndex]\]."
+            right="Descending Order: just change all \[minIndex\] ⟶ \[maxIndex\], and \[array[j] < array[minIndex]\] ⟶ \[array[j] > array[maxIndex]\]."
         ></Note>
 
         <!-- Selection Sort from End to Start -->
@@ -19,10 +35,25 @@
             content="Selection Sort from End to Start"
             heading="h2"
         ></Heading>
-        <Prism :source="selectionSortFromEndToStart"></Prism>
+        <Prism
+            source="function selectionSortFromEndToStart(array) {
+    const { length } = array;
+    let maxIndex;
+    for (let i = length - 1; i > 0; i--) {
+        maxIndex = i;
+        for (let j = i - 1; j >= 0; j--) {
+            if (array[j] > array[maxIndex]) {
+                maxIndex = j;
+            }
+        }
+        [array[i], array[maxIndex]] = [array[maxIndex], array[i]];
+    }
+    return array;
+}"
+        ></Prism>
         <Note
             left="NOTE 2"
-            right="Descending Order: just change all maxIndex ⟶ minIndex, and \[array[j] > array[maxIndex]\] ⟶ \[array[j] < array[minIndex]\]."
+            right="Descending Order: just change all \[maxIndex\] ⟶ \[minIndex\], and \[array[j] > array[maxIndex]\] ⟶ \[array[j] < array[minIndex]\]."
         ></Note>
 
         <!-- Algorithm Visualization -->
@@ -65,16 +96,7 @@
 </template>
 
 <script>
-import { selectionSortFromStartToEnd } from "@/utils/SortFunction/SelectionSort/selectionSortFromStartToEnd.js";
-import { selectionSortFromEndToStart } from "@/utils/SortFunction/SelectionSort/selectionSortFromEndToStart.js";
-
 export default {
     name: "SelectionSort",
-    setup() {
-        return {
-            selectionSortFromStartToEnd,
-            selectionSortFromEndToStart,
-        };
-    },
 };
 </script>

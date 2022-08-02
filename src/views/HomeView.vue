@@ -1,9 +1,6 @@
 <template>
     <!-- 1. left ul fixed -->
     <ul id="left-ul">
-        <!-- <li :class="{ active: currentIndex === null }" @click="overview()">
-            Overview
-        </li> -->
         <li
             v-for="(item, index) in sortArr"
             @click="changeComponent(index)"
@@ -30,8 +27,9 @@
         <!-- Transition: https://vuejs.org/guide/built-ins/transition.html#the-transition-component -->
         <!-- keep-alive: https://vuejs.org/guide/built-ins/keep-alive.html -->
         <!-- Dynamic Components: https://vuejs.org/guide/essentials/component-basics.html#dynamic-components -->
+
         <router-view v-slot="{ Component }">
-            <Transition name="bounce">
+            <Transition name="animation" mode="out-in">
                 <keep-alive>
                     <component :is="showComponent" />
                 </keep-alive>
@@ -88,8 +86,11 @@
 import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
-import { shuffle } from "@/utils/shuffle";
+import { useRouter } from "vue-router";
+
 import Driver from "driver.js";
+
+import { shuffle } from "@/utils/shuffle.js";
 
 import Overview from "@/components/Overview.vue";
 import BubbleSort from "@/components/BubbleSort.vue";
@@ -103,8 +104,6 @@ import BogoSort from "@/components/BogoSort.vue";
 import RadixSort from "@/components/RadixSort.vue";
 import CountingSort from "@/components/CountingSort.vue";
 import CocktailShakerSort from "@/components/CocktailShakerSort.vue";
-
-import { useRouter } from "vue-router";
 
 export default {
     name: "HomeView",
@@ -192,6 +191,7 @@ export default {
             "Counting Sort",
             "Cocktail Shaker Sort",
         ];
+        // sortArr = ["Overview"].concat(sortArr);
 
         const routerArr = sortArr.map((item) => item.replaceAll(" ", ""));
 
@@ -273,23 +273,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.bounce-enter-active {
-    animation: bounce 0.5s;
+.animation-enter-from,
+.animation-leave-to {
+    opacity: 0;
 }
-.bounce-leave-active {
-    animation: bounce 0.5s reverse;
+
+.animation-enter-to,
+.animation-leave-from {
+    opacity: 1;
 }
-@keyframes bounce {
-    0% {
-        transform: scale(0);
-    }
-    50% {
-        transform: scale(1.25);
-    }
-    100% {
-        transform: scale(1);
-    }
+
+.animation-enter-active,
+.animation-leave-active {
+    transition: opacity 0.5s;
 }
+
 #center-content {
     margin-left: 10vw;
     margin-right: 10vw;

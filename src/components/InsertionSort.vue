@@ -7,7 +7,23 @@
             content="Insertion Sort from Start to End"
             heading="h2"
         ></Heading>
-        <Prism :source="insertionSortFromStartToEnd"></Prism>
+        <Prism
+            source="function insertionSortFromStartToEnd(array) {
+    const { length } = array;
+    let current;
+    let prefix;
+    for (let i = 1; i < length; i++) {
+        current = array[i];
+        prefix = i - 1;
+        while (prefix >= 0 && array[prefix] > current) {
+            array[prefix + 1] = array[prefix];
+            prefix--;
+        }
+        array[prefix + 1] = current;
+    }
+    return array;
+}"
+        ></Prism>
         <Note
             left="NOTE 1"
             right="Descending Order: just change \[array[prefix] > current\] ⟶ \[array[prefix] < current\]."
@@ -19,7 +35,23 @@
             content="Insertion Sort from End to Start"
             heading="h2"
         ></Heading>
-        <Prism :source="insertionSortFromEndToStart"></Prism>
+        <Prism
+            source="function insertionSortFromEndToStart(array) {
+    const { length } = array;
+    let current;
+    let suffix;
+    for (let i = length - 2; i >= 0; i--) {
+        current = array[i];
+        suffix = i + 1;
+        while (suffix <= length - 1 && array[suffix] < current) {
+            array[suffix - 1] = array[suffix];
+            suffix++;
+        }
+        array[suffix - 1] = current;
+    }
+    return array;
+}"
+        ></Prism>
         <Note
             left="NOTE 2"
             right="Descending Order: just change \[array[suffix] < current\] ⟶ \[array[suffix] > current\]."
@@ -65,16 +97,10 @@
 </template>
 
 <script>
-import { insertionSortFromStartToEnd } from "@/utils/SortFunction/InsertionSort/insertionSortFromStartToEnd.js";
-import { insertionSortFromEndToStart } from "@/utils/SortFunction/InsertionSort/insertionSortFromEndToStart.js";
-
 export default {
     name: "InsertionSort",
     setup() {
-        return {
-            insertionSortFromStartToEnd,
-            insertionSortFromEndToStart,
-        };
+        console.log("InsertionSort");
     },
 };
 </script>

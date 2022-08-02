@@ -2,20 +2,20 @@
 // ascending order
 // reference: https://learnersbucket.com/examples/algorithms/quick-sort-iterative/
 
+function partitionHigh(array, low, high) {
+    let pivot = array[high];
+    let i = low;
+    for (let j = low; j < high; j++) {
+        if (array[j] <= pivot) {
+            [array[i], array[j]] = [array[j], array[i]];
+            i++;
+        }
+    }
+    [array[i], array[high]] = [array[high], array[i]];
+    return i;
+}
 
 function quickSortNonRecursion(array) {
-    function partitionHigh(array, low, high) {
-        let pivot = array[high];
-        let i = low;
-        for (let j = low; j < high; j++) {
-            if (array[j] <= pivot) {
-                [array[i], array[j]] = [array[j], array[i]];
-                i++;
-            }
-        }
-        [array[i], array[high]] = [array[high], array[i]];
-        return i;
-    }
     let stack = [];
     let start = 0;
     let end = array.length - 1;
@@ -33,4 +33,4 @@ function quickSortNonRecursion(array) {
     return array;
 }
 
-export { quickSortNonRecursion }
+export { partitionHigh, quickSortNonRecursion }

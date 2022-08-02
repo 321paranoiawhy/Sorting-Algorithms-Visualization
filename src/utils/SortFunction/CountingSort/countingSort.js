@@ -1,14 +1,14 @@
-function countingSort(canvas, arr, option) {
-    const max = Math.max(...arr);
+function countingSort(array) {
+    const max = Math.max(...array);
     const count = new Array(max + 1).fill(0);
-    arr.forEach((item) => count[item] += 1);
+    array.forEach((item) => count[item] += 1);
     let j = 0;
     for (let i = 0; i < max + 1; i++) {
         while (count[i]--) {
-            arr[j++] = i;
+            array[j++] = i;
         }
     }
-    return arr;
+    return array;
 }
 
 export { countingSort }

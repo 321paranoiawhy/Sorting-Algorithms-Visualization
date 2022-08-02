@@ -1,16 +1,28 @@
 <template>
-    <div class="fixed">
+    <div class="fixed-nav">
         <img
             src="@/assets/images/MdiChevronUpCircleOutline.svg"
             alt=""
             v-if="showTop"
             @click="backToTop"
+            content="Up"
+            v-tippy="{
+                arrow: true,
+                arrowType: 'round',
+                placement: 'right',
+            }"
         />
         <img
             src="@/assets/images/MdiChevronDownCircleOutline.svg"
             alt=""
             v-if="showBottom"
             @click="goToBottom"
+            content="Down"
+            v-tippy="{
+                arrow: true,
+                arrowType: 'round',
+                placement: 'right',
+            }"
         />
     </div>
 </template>
@@ -100,7 +112,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div.fixed {
+div.fixed-nav {
     display: flex;
     flex-direction: column;
     position: fixed;

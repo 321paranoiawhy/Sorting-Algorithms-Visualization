@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import HomeView from '../views/HomeView.vue'
 
 const routes = [
@@ -69,121 +70,6 @@ const routes = [
       },
     ],
   },
-
-
-
-
-  // {
-  //   path: '/',
-  //   // redirect: 'home',
-  //   component: () => import("@/views/HomeView.vue"),
-  //   children: [
-  //     {
-  //       path: '/Overview',
-  //       name: 'Overview',
-  //       component: () => import('@/components/Overview.vue'),
-  //     },
-  //     {
-  //       path: '/BubbleSort',
-  //       name: 'BubbleSort',
-  //       component: () => import('@/components/BubbleSort.vue'),
-  //     },
-  //     {
-  //       path: '/InsertionSort',
-  //       name: 'InsertionSort',
-  //       component: () => import('@/components/InsertionSort.vue'),
-  //     },
-  //     {
-  //       path: '/MergeSort',
-  //       name: 'MergeSort',
-  //       component: () => import('@/components/MergeSort.vue'),
-  //     },
-  //     {
-  //       path: '/QuickSort',
-  //       name: 'QuickSort',
-  //       component: () => import('@/components/QuickSort.vue'),
-  //     },
-  //     {
-  //       path: '/SelectionSort',
-  //       name: 'SelectionSort',
-  //       component: () => import('@/components/SelectionSort.vue'),
-  //     },
-  //   ],
-  // },
-
-
-  // {
-  //   path: '/home',
-  //   name: 'home',
-  //   component: () => import("@/views/HomeView.vue"),
-  //   children: [
-  //     {
-  //       path: '/Overview',
-  //       name: 'Overview',
-  //       component: () => import('@/components/Overview.vue')
-  //     },
-  //     {
-  //       path: '/BubbleSort',
-  //       name: 'BubbleSort',
-  //       component: () => import('@/components/BubbleSort.vue')
-  //     },
-  //     {
-  //       path: '/InsertionSort',
-  //       name: 'InsertionSort',
-  //       component: () => import('@/components/InsertionSort.vue')
-  //     },
-  //     {
-  //       path: '/MergeSort',
-  //       name: 'MergeSort',
-  //       component: () => import('@/components/MergeSort.vue')
-  //     },
-  //     {
-  //       path: '/QuickSort',
-  //       name: 'QuickSort',
-  //       component: () => import('@/components/QuickSort.vue')
-  //     },
-  //     {
-  //       path: '/SelectionSort',
-  //       name: 'SelectionSort',
-  //       component: () => import('@/components/SelectionSort.vue')
-  //     },
-  //   ],
-  // },
-  // {
-  //   path: '/Overview',
-  //   name: 'Overview',
-  //   component: () => import('@/components/Overview.vue')
-  // },
-  // {
-  //   path: '/BubbleSort',
-  //   name: 'BubbleSort',
-  //   // redirect: '/home/BubbleSort',
-  //   component: () => import('@/components/BubbleSort.vue')
-  // },
-  // {
-  //   path: '/InsertionSort',
-  //   name: 'InsertionSort',
-  //   // redirect: '/home/InsertionSort',
-  //   component: () => import('@/components/InsertionSort.vue')
-  // },
-  // {
-  //   path: '/MergeSort',
-  //   name: 'MergeSort',
-  //   // redirect: '/home/MergeSort',
-  //   component: () => import('@/components/MergeSort.vue')
-  // },
-  // {
-  //   path: '/QuickSort',
-  //   name: 'QuickSort',
-  //   // redirect: '/home/QuickSort',
-  //   component: () => import('@/components/QuickSort.vue')
-  // },
-  // {
-  //   path: '/SelectionSort',
-  //   name: 'SelectionSort',
-  //   // redirect: '/home/SelectionSort',
-  //   component: () => import('@/components/SelectionSort.vue')
-  // },
 ]
 
 const router = createRouter({

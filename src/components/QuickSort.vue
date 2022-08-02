@@ -7,7 +7,24 @@
             content="Recursive Quick Sort"
             heading="h2"
         ></Heading>
-        <Prism :source="quickSortRecursion"></Prism>
+        <Prism
+            source="function quickSortRecursion(array) {
+    const { length } = array;
+    if (length <= 1) return array;
+    const pivotIndex = Math.floor(length / 2);
+    let pivot = array.splice(pivotIndex, 1)[0];
+    let left = [];
+    let right = [];
+    for (let i = 0; i < length - 1; i++) {
+        if (array[i] < pivot) {
+            left.push(array[i]);
+        } else {
+            right.push(array[i]);
+        }
+    }
+    return quickSort(left).concat([pivot], quickSort(right));
+};"
+        ></Prism>
         <Note
             left="NOTE 1"
             right="Descending Order: just change \[array[i] < pivot\] ⟶ \[array[i] > pivot\]."
@@ -19,7 +36,38 @@
             content="Non-Recursive Quick Sort"
             heading="h2"
         ></Heading>
-        <Prism :source="quickSortNonRecursion"></Prism>
+        <Prism
+            source="function partitionHigh(array, low, high) {
+    let pivot = array[high];
+    let i = low;
+    for (let j = low; j < high; j++) {
+        if (array[j] <= pivot) {
+            [array[i], array[j]] = [array[j], array[i]];
+            i++;
+        }
+    }
+    [array[i], array[high]] = [array[high], array[i]];
+    return i;
+}
+
+function quickSortNonRecursion(array) {
+    let stack = [];
+    let start = 0;
+    let end = array.length - 1;
+    stack.push({ x: start, y: end });
+    while (stack.length) {
+        const { x, y } = stack.shift();
+        const PI = partitionHigh(array, x, y);
+        if (PI - 1 > x) {
+            stack.push({ x: x, y: PI - 1 });
+        }
+        if (PI + 1 < y) {
+            stack.push({ x: PI + 1, y: y });
+        }
+    }
+    return array;
+}"
+        ></Prism>
         <Note
             left="NOTE 2"
             right="Descending Order: just change \[array[j] <= pivot\] ⟶ \[array[j] > pivot\]."
@@ -90,16 +138,7 @@
 </template>
 
 <script>
-import { quickSortRecursion } from "@/utils/SortFunction/QuickSort/quickSortRecursion.js";
-import { quickSortNonRecursion } from "@/utils/SortFunction/QuickSort/quickSortNonRecursion.js";
-
 export default {
     name: "QuickSort",
-    setup() {
-        return {
-            quickSortRecursion,
-            quickSortNonRecursion,
-        };
-    },
 };
 </script>

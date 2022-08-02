@@ -20,7 +20,7 @@
         margin-left: 0 !important;
     }
     /* Controls img */
-    img {
+    img:not(.menu) {
         width: 16px !important;
         height: 16px !important;
     }

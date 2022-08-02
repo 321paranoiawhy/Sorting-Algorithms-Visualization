@@ -3,7 +3,52 @@
         <BottomRightNav></BottomRightNav>
         <!-- Heap Sort -->
         <Heading anchor="Heap-Sort" content="Heap Sort" heading="h2"></Heading>
-        <Prism :source="heapSortFunction"></Prism>
+        <Prism
+            source="function buildMaxHeap(array) {
+    let i = Math.floor(array.length / 2 - 1);
+    while (i >= 0) {
+        heapify(array, i, array.length);
+        i--;
+    }
+}
+
+function heapify(heap, i, max) {
+    let index;
+    let leftChild;
+    let rightChild;
+    while (i < max) {
+        index = i;
+        leftChild = 2 * i + 1;
+        rightChild = leftChild + 1;
+        if (leftChild < max && heap[leftChild] > heap[index]) {
+            index = leftChild;
+        }
+        if (rightChild < max && heap[rightChild] > heap[index]) {
+            index = rightChild;
+        }
+        if (index === i) {
+            return;
+        }
+        swap(heap, i, index);
+        i = index;
+    }
+}
+
+function swap(array, firstItemIndex, lastItemIndex) {
+    [array[firstItemIndex], array[lastItemIndex]] = [array[lastItemIndex], array[firstItemIndex]];
+}
+
+function heapSort(array) {
+    buildMaxHeap(array);
+    lastIndex = array.length - 1;
+    while (lastIndex > 0) {
+        swap(array, 0, lastIndex);
+        heapify(array, 0, lastIndex);
+        lastIndex--;
+    }
+    return array;
+}"
+        ></Prism>
         <Note
             left="NOTE 1"
             right="Descending Order: just change \[heap[leftChild] > heap[index]\] ⟶ \[heap[leftChild] < heap[index]\] and \[heap[rightChild] > heap[index]\] ⟶ \[heap[rightChild] < heap[index]\]."
@@ -74,16 +119,7 @@
 </template>
 
 <script>
-import { heapSortFunction } from "@/utils/SortFunction/HeapSort/heapSortFunction";
-import { heapSortClass } from "@/utils/SortFunction/HeapSort/heapSortClass";
-
 export default {
     name: "HeapSort",
-    setup() {
-        return {
-            heapSortFunction,
-            heapSortClass,
-        };
-    },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <div class="TOC">
+    <div class="fixed-TOC" ref="TOC">
         <ul>
             <!-- TOC -->
             <span>TOC</span>
@@ -8,20 +8,25 @@
                 v-for="(item, index) in content"
                 :key="index"
                 :class="{
-                    'first-level': level[index] === 1,
-                    'second-level': level[index] === 2,
-                    'third-level': level[index] === 3,
-                    'fourth-level': level[index] === 4,
+                    'first-level': level[index] === '1',
+                    'second-level': level[index] === '2',
+                    'third-level': level[index] === '3',
+                    'fourth-level': level[index] === '4',
                 }"
             >
-                <a :href="'#' + anchor[index]">{{ item }}</a>
+                <a
+                    :href="'#' + anchor[index]"
+                    :content="tippy[index]"
+                    v-tippy="{
+                        arrow: true,
+                        arrowType: 'round',
+                        placement: 'right',
+                    }"
+                    >{{ item }}</a
+                >
             </li>
         </ul>
-        <img
-            src="@/assets/images/MdiTableOfContents.svg"
-            alt=""
-            class="ripple"
-        />
+        <img src="@/assets/images/MdiTableOfContents.svg" alt="" class="menu" />
         <div class="container">
             <div class="circle"></div>
 
@@ -35,6 +40,10 @@
 </template>
 
 <script>
+import { ref } from "@vue/reactivity";
+import { onMounted } from "@vue/runtime-core";
+import { nextTick } from "vue";
+
 export default {
     name: "TOC",
     props: {
@@ -42,14 +51,57 @@ export default {
             type: Array,
             default: [],
         },
-        anchor: {
-            type: Array,
-            default: [],
-        },
-        level: {
-            type: Array,
-            default: [],
-        },
+        // anchor: {
+        //     type: Array,
+        //     default: [],
+        // },
+        // level: {
+        //     type: Array,
+        //     default: [],
+        // },
+    },
+    setup() {
+        const TOC = ref(null);
+        const anchor = ref([]);
+        const tippy = ref([]);
+        const level = ref([]);
+
+        onMounted(() => {
+            const centerContent = document.querySelector("#center-content");
+            // TOC.value.onmouseover = () => {
+            //     centerContent.style.filter = "blur(50px)";
+            //     // TOC.value.style.filter = "";
+            // };
+            // TOC.value.onmouseout = () => {
+            //     centerContent.style.filter = "";
+            // };
+
+            // 1. nextTick: https://vuejs.org/api/general.html#nexttick
+            // https://blog.csdn.net/qq_41619796/article/details/118996974
+            nextTick(() => {
+                anchor.value = [];
+                let heading = document.querySelectorAll("[class^=gradient]");
+                heading.forEach((item, index) => {
+                    anchor.value[index] = item.id;
+                    // anchor.value.push(item.id);
+                    tippy.value[index] = item.id.replaceAll("-", " ");
+                    // tippy.value.push(item.id.replaceAll("-", " "));
+                    level.value[index] = item.tagName.slice(1);
+                    // level.value.push(item.tagName.slice(1));
+                });
+                // console.log(anchor.value[0]);
+            });
+            // 2. setTimeout
+            // setTimeout(() => {
+            //     console.log(document.querySelectorAll("h2"));
+            // }, 2000);
+        });
+        return {
+            TOC,
+            anchor,
+            tippy,
+            level,
+        };
     },
 };
 </script>
@@ -77,11 +129,8 @@ a:active {
     text-decoration: none;
     color: inherit;
 }
-a {
-    display: inline-block;
-    width: 100%;
-}
-div.TOC {
+
+div.fixed-TOC {
     display: flex;
     align-items: center;
     position: fixed;
@@ -89,14 +138,13 @@ div.TOC {
     transform: translateY(-50%);
     right: 10vw;
     width: fit-content;
-    margin-right: 1px;
-    z-index: 1;
+    z-index: 100;
     &:hover {
-        background-color: white;
-        border-right: 1px solid var(--divider-light);
-        margin-right: 0;
+        // margin-right: 0;
         & ul {
             visibility: visible;
+            width: 150px;
+            // width: clamp(150px, 10vw, 200px);
         }
     }
     & img {
@@ -110,25 +158,20 @@ div.TOC {
     }
     & ul {
         visibility: hidden;
+        width: 0;
+        transition: all 1s;
         box-sizing: border-box;
-        // minus image width
-        width: calc(10vw - 36px);
         padding-left: 0;
         & li {
             list-style-type: none;
             position: relative;
-            height: auto;
             height: $li-height;
             line-height: $li-height;
             text-align: left;
-            cursor: pointer;
             // TODO
             color: var(--main-color);
-
             // all li have the same before circle
             &::before {
-                background-color: white;
-
                 position: absolute;
                 content: " ";
                 top: 50%;

@@ -7,7 +7,33 @@
             content="Bogo Sort Just for Fun"
             heading="h2"
         ></Heading>
-        <Prism :source="bogoSort"></Prism>
+        <Prism
+            source="function swap(array, i, j) {
+    [array[i], array[j]] = [array[j], array[i]];
+}
+
+function shuffle(array) {
+    const { length } = array;
+    for (let i = 0; i < length; i++) {
+        let randomIndex = Math.floor(Math.random() * length);
+        swap(array, i, randomIndex);
+    }
+}
+
+function isSorted(array) {
+    const { length } = array;
+    return array.every((item, index) => item <= array[index + 1] || index === length - 1);
+}
+
+function bogoSort(array) {
+    let sorted = false;
+    while (!sorted) {
+        shuffle(array);
+        sorted = isSorted(array);
+    }
+    return array;
+}"
+        ></Prism>
         <Note
             left="NOTE 1"
             right="Descending Order: just change \[item <= array[index + 1]\] ⟶ \[item >= array[index + 1]\]."
@@ -78,14 +104,7 @@
 </template>
 
 <script>
-import { bogoSort } from "@/utils/SortFunction/BogoSort/bogoSort";
-
 export default {
     name: "BogoSort",
-    setup() {
-        return {
-            bogoSort,
-        };
-    },
 };
 </script>
