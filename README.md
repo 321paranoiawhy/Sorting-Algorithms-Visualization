@@ -1,6 +1,6 @@
 # Website Deployed
 
-[See here](https://javascript-sort.netlify.app/SelectionSort#Scatter-to-Line)
+[See here](https://javascript-sort.netlify.app/Overview)
 
 # More Sorting Algorithms
 
