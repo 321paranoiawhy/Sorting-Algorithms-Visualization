@@ -1,6 +1,6 @@
 # Website Deployed
 
-[See here](https://javascript-sort.netlify.app/Overview)
+[See here](https://javascript-sort.netlify.app)
 
 # More Sorting Algorithms
 
