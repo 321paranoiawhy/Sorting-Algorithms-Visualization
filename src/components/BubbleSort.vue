@@ -58,7 +58,7 @@
             heading="h2"
         ></Heading>
         <Note
-            left="Note 3"
+            left="NOTE 3"
             right="Here are several data visualization of Selection Sort Algorithm."
         ></Note>
 

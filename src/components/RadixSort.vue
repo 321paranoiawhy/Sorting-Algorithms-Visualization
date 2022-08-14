@@ -46,7 +46,7 @@
             heading="h2"
         ></Heading>
         <Note
-            left="Note 1"
+            left="NOTE 1"
             right="Here are several data visualization of Radix Sort Algorithm."
         ></Note>
 

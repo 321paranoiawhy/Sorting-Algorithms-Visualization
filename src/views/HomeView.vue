@@ -335,6 +335,7 @@ ul li {
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     text-align: left;
+    cursor: pointer;
     &.active {
         background-color: var(--second-color);
         color: var(--main-color);

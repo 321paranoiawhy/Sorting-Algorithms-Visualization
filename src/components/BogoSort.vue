@@ -46,7 +46,7 @@ function bogoSort(array) {
             heading="h2"
         ></Heading>
         <Note
-            left="Note 2"
+            left="NOTE 2"
             right="Here are several data visualization of Bogo Sort Algorithm."
         ></Note>
 

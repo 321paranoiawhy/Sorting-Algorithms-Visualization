@@ -6,7 +6,7 @@
 
 It has now 11 sorting algorithms and 6 different animations. Just have fun and learn it!
 
-More sorting algorithms will be added in the next releases. So keep in touch with this project and give it a star if possible. Thanks u all.
+More sorting algorithms will be added in the next releases. So keep in touch with this project and give it a star if possible. Thank you all.
 
 # Issues and Pull Requests
 
@@ -28,8 +28,8 @@ Issues and Pull Requests are welcome, please feel free to do that. And I will ch
     ├─components
     │  └─common # common components which is globally available
     ├─css # global stylesheet and prism theme stylesheet
-    ├─router #vue-router
-    ├─store #vuex
+    ├─router # vue-router
+    ├─store # vuex
     ├─utils # utility functions
     │  ├─DrawAll # draw all initially
     │  ├─DrawSingle # draw single graph, such as circle.js, scatter2Line.js

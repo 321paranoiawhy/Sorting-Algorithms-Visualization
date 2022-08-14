@@ -80,7 +80,7 @@ function quickSortNonRecursion(array) {
             heading="h2"
         ></Heading>
         <Note
-            left="Note 3"
+            left="NOTE 3"
             right="Here are several data visualization of Quick Sort Algorithm."
         ></Note>
 
